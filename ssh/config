@@ -1,0 +1,6 @@
+# SSH 配置文件
+# 在这里添加你的 SSH 配置，例如：
+# Host github.com
+#   HostName github.com
+#   User git
+#   IdentityFile ~/.ssh/id_ed25519

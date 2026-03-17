@@ -1,0 +1,14 @@
+[user]
+  name = Your Name
+  email = your.email@example.com
+[core]
+  editor = vim
+[alias]
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+  unstage = reset HEAD --
+  last = log -1 HEAD
+[init]
+  defaultBranch = main

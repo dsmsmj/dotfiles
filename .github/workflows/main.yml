@@ -1,0 +1,48 @@
+name: Dotfiles CI/CD
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Run install script
+      run: |
+        chmod +x install.sh
+        ./install.sh
+
+    - name: Verify Git config
+      run: |
+        cat ~/.gitconfig
+        grep "name = Your Name" ~/.gitconfig || exit 1
+        grep "email = your.email@example.com" ~/.gitconfig || exit 1
+
+    - name: Verify npm config
+      run: |
+        cat ~/.npmrc
+        grep "registry=https://registry.npmjs.org/" ~/.npmrc || exit 1
+
+    - name: Verify SSH config
+      run: |
+        cat ~/.ssh/config
+        grep "# SSH 配置文件" ~/.ssh/config || exit 1
+
+    - name: Verify VSCode settings
+      run: |
+        cat ~/.config/Code/User/settings.json
+        grep "editor.fontSize": 14 ~/.config/Code/User/settings.json || exit 1
+
+    - name: Verify Cursor AI settings
+      run: |
+        cat ~/.config/Cursor/User/settings.json
+        grep "cursor.chat.preferredModel": "gpt-4" ~/.config/Cursor/User/settings.json || exit 1
+
+    - name: Show installed dotfiles (for debugging)
+      run: |
+        ls -la ~/
+        ls -la ~/.config/Code/User/
+        ls -la ~/.config/Cursor/User/
