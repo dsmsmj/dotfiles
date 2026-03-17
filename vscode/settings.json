@@ -1,0 +1,88 @@
+{
+    "lsby_gitee_vscode_plugin.personal_access_tokens": "***",
+    "tabnine.experimentalAutoImports": true,
+    "yaml.schemas": {
+        "file:///c%3A/Users/86151/.vscode/extensions/atlassian.atlascode-3.4.5/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "Codegeex.License": "",
+    "workbench.iconTheme": "material-icon-theme",
+    "cursor.cpp.disabledLanguages": [
+        "plaintext",
+        "markdown",
+        "scminput"
+    ],
+    "totalTypeScript.hideAllTips": false,
+    "totalTypeScript.hideBasicTips": false,
+    "git.autofetch": true,
+    "diffEditor.maxComputationTime": 0,
+    "explorer.confirmPasteNative": false,
+    "git.suggestSmartCommit": false,
+    "git.confirmSync": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[less]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features",
+        "editor.formatOnSave": false
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "cursor.composer.shouldAllowCustomModes": true,
+    "clangd.path": "c:\\Users\\86151\\AppData\\Roaming\\Cursor\\User\\globalStorage\\llvm-vs-code-extensions.vscode-clangd\\install\\19.1.2\\clangd_19.1.2\\bin\\clangd.exe",
+    "files.refactoring.autoSave": false,
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
+    "editor.minimap.enabled": true,
+    "gitlens.advanced.fileHistoryShowMergeCommits": true,
+    "java.configuration.maven.userSettings": "C:\\java\\apache-maven-3.9.11-bin\\apache-maven-3.9.11\\.m2\\settings-corp.xml",
+    "maven.executable.path": "C:\\java\\apache-maven-3.9.11-bin\\apache-maven-3.9.11\\bin\\mvn.cmd",
+    "maven.settingsFile": "C:\\java\\apache-maven-3.9.11-bin\\apache-maven-3.9.11\\.m2\\settings-corp.xml",
+    "maven.excludedFolders": [
+
+        "**/.*",
+        "**/node_modules",
+        "**/target",
+        "**/bin",
+        "**/archetype-resources"
+    ],
+    "java.maven.updateSnapshots": true,
+    "redhat.telemetry.enabled": true,
+    "java.debug.settings.showStaticVariables": false,
+    "java.debug.settings.showHex": false,
+    "java.debug.settings.showQualifiedNames": false,
+    "java.debug.settings.showLogicalStructure": true,
+    "vscode-office.openOutline": false,
+    "vs-kubernetes": {
+        "vscode-kubernetes.helm-path-windows": "C:\\Users\\86151\\.vs-kubernetes\\tools\\helm\\windows-amd64\\helm.exe",
+        "vscode-kubernetes.minikube-path-windows": "C:\\Users\\86151\\.vs-kubernetes\\tools\\minikube\\windows-amd64\\minikube.exe"
+    },
+    "vscode-office.editorTheme": "Auto",
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "editor.formatOnSave": false,
+    "update.releaseTrack": "dev",
+    "update.mode": "silentlyApplyOnQuit",
+    "gitlens.ai.model": "gitkraken",
+    "gitlens.ai.gitkraken.model": "gemini:gemini-2.5-flash",
+    "cursor.general.disableHttp2": true,
+    "http.proxyStrictSSL": false,
+    "gitlens.views.fileHistory.mode": "contributors",
+    "chat.viewSessions.orientation": "stacked"
+}
