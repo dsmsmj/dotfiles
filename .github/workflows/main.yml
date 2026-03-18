@@ -1,6 +1,7 @@
 name: Dotfiles CI/CD
 
-on: [push, pull_request]
+# on: [push, pull_request]
+on: [workflow_dispatch]
 
 jobs:
   build:
@@ -11,9 +12,32 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Run install script
+      shell: bash
       run: |
+        set -euo pipefail
         chmod +x install.sh
-        ./install.sh
+        bash ./install.sh
+
+    - name: Debug installed paths (pre-assert)
+      shell: bash
+      run: |
+        set -euo pipefail
+        echo "HOME=$HOME"
+        echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
+        echo "--- expected targets ---"
+        ls -la "$HOME" || true
+        ls -la "$HOME/.ssh" || true
+        ls -la "$HOME/.config" || true
+        ls -la "$HOME/.config/Code" || true
+        ls -la "$HOME/.config/Code/User" || true
+        ls -la "$HOME/.config/Cursor" || true
+        ls -la "$HOME/.config/Cursor/User" || true
+        echo "--- key files ---"
+        ls -la "$HOME/.gitconfig" || true
+        ls -la "$HOME/.npmrc" || true
+        ls -la "$HOME/.ssh/config" || true
+        ls -la "$HOME/.config/Code/User/settings.json" || true
+        ls -la "$HOME/.config/Cursor/User/settings.json" || true
 
     - name: Verify installed dotfiles are symlinks
       shell: bash
@@ -26,6 +50,9 @@ jobs:
 
           if [ ! -e "$target" ]; then
             echo "Missing: $target"
+            echo "--- debug for missing path ---"
+            ls -la "$(dirname "$target")" || true
+            ls -la "$HOME/.config" || true
             exit 1
           fi
           if [ ! -L "$target" ]; then
