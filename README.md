@@ -60,6 +60,30 @@ git clone https://github.com/YourUsername/dotfiles.git ~/.dotfiles && ~/.dotfile
 
 ## 配置说明
 
+## 环境搭建手册（doc）
+
+总入口（装机顺序 + 文档索引）：`doc/README.md`
+
+### Windows
+
+- `doc/windows/nvm.md`：Node.js 版本管理（nvm-windows）
+- `doc/windows/bun.md`：Bun 安装与使用
+- `doc/windows/yarn.md`：Yarn 安装与使用（Corepack）
+- `doc/windows/pnpm.md`：pnpm 安装与使用（Corepack）
+- `doc/windows/docker.md`：Docker Desktop + WSL2 安装与常见坑
+- `doc/windows/maven.md`：Maven 安装与 JAVA_HOME 配置
+- `doc/windows/git-ssh.md`：Git SSH（生成 Key / 配置远端）
+
+### macOS
+
+- `doc/mac/nvm.md`：Node.js 版本管理（nvm）
+- `doc/mac/bun.md`：Bun 安装与使用
+- `doc/mac/yarn.md`：Yarn 安装与使用（Corepack）
+- `doc/mac/pnpm.md`：pnpm 安装与使用（Corepack）
+- `doc/mac/docker.md`：Docker 安装与使用（Docker Desktop / Colima）
+- `doc/mac/maven.md`：Maven 安装与使用
+- `doc/mac/git-ssh.md`：Git SSH（生成 Key / 配置远端）
+
 ### Git
 
 *   `.gitconfig`: 包含了你的 Git 用户名、邮箱、常用的别名和默认分支设置。请根据你的实际情况修改 `user.name` 和 `user.email`。
@@ -67,6 +91,7 @@ git clone https://github.com/YourUsername/dotfiles.git ~/.dotfiles && ~/.dotfile
 ### Node.js / npm
 
 *   `.npmrc`: 配置了 npm 的注册表地址。默认指向官方 npm 注册表。
+*   Windows 版本管理（nvm-windows）：见 `doc/windows/nvm.md`
 
 ### SSH
 
