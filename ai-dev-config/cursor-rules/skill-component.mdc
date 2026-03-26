@@ -1,0 +1,28 @@
+---
+description: 生成 React 组件，输入 /component [名称] [描述] 触发
+globs:
+  - "src/components/**/*.tsx"
+  - "app/**/*.tsx"
+alwaysApply: false
+---
+
+## 执行流程（不跳步骤）
+
+1. **确认分类**
+   - components/ui/ → 纯展示，无业务逻辑
+   - components/features/[domain]/ → 含业务逻辑
+   不确定就问，不自己猜。
+
+2. **生成结构**
+   顺序：imports → types → component → export default
+   - Props 类型定义在同文件顶部
+   - 不生成 defaultProps，用参数默认值
+   - 不用 React.FC
+
+3. **生成前检查**
+   - 有没有 shadcn/ui 组件可以直接用？有就用
+   - 超过 150 行了吗？超了主动拆，告诉我拆法
+   - 有没有 hardcode 字符串应该是 props？
+
+4. **只输出**
+   组件文件本身。不生成 index.ts、story、test，除非我要求。

@@ -1,0 +1,28 @@
+---
+description: 代码风格硬约束，所有文件生效
+globs: []
+alwaysApply: true
+---
+
+## 强制规则
+- 不用 var，只用 const/let
+- 不用 class components
+- 不用 any，需要我批准才能用
+- 函数超 40 行拆分，不讨论
+- 注释只写 WHY，不写 WHAT
+
+## 命名
+- 组件: PascalCase
+- 函数/变量: camelCase
+- 常量: UPPER_SNAKE_CASE
+- 文件: 组件用 PascalCase.tsx，其他用 kebab-case.ts
+
+## 类型
+- Props 类型定义在组件同文件顶部
+- 能推断的不显式写类型
+- 用 type 不用 interface（除非需要 extends）
+
+## 格式（不需要你操心，交给 prettier）
+- 2 空格缩进
+- 单引号
+- 无分号
