@@ -11,14 +11,14 @@ alwaysApply: false
 - f-string 优先，不用 % 格式化，不用 .format()
 
 ## 包管理
-- 用 uv，不用 pip/poetry
-- 依赖锁定在 uv.lock，提交到 git
+- 用 stack.md 中指定的 Python 包管理工具
+- 依赖锁文件提交到 git
 - 不用 requirements.txt（除非部署平台强制要求）
 
-## 脚本（typer）
-- 入口函数加 @app.command()
-- 参数验证交给 typer/Annotated，不在函数体里手写 if
-- 错误：typer.echo(msg, err=True) + raise typer.Exit(1)
+## 脚本
+- 使用 stack.md 中指定的 CLI 框架
+- 参数验证交给框架，不在函数体里手写 if
+- 错误输出到 stderr + 非零退出码
 - 业务逻辑抽成纯函数，和 CLI 入口分离
 
 ## 服务（FastAPI）

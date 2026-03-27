@@ -23,7 +23,8 @@ Repository：DB 查询，不含业务判断
 - Schema 定义在 lib/validators/，前后端复用
 - 不信任任何客户端传来的 id，必须鉴权后再查
 
-## DB（Drizzle）
+## DB
+- 使用 stack.md 中指定的 ORM/查询工具
 - 查询在 repositories/ 里，不散落在 service 或 route
-- 事务用 db.transaction()，不手写 BEGIN/COMMIT
+- 事务用 ORM 提供的事务 API，不手写 BEGIN/COMMIT
 - 不用 SELECT *，明确列出字段

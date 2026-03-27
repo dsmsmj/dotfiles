@@ -6,11 +6,8 @@ globs:
 alwaysApply: false
 ---
 
-## 固定分层，不合并
-
-Route Handler：validate → call service → return response
-Service：业务逻辑，不直接碰 DB
-Repository：DB 查询，不含业务判断
+## 分层规则
+参考 03-node.mdc 中的分层职责和错误处理规则，此处不重复。
 
 ## 生成顺序
 1. Zod schema（放 lib/validators/[resource].ts）
@@ -20,8 +17,6 @@ Repository：DB 查询，不含业务判断
 
 ## 强制包含
 - 所有入参 Zod parse，失败返回 400 + 错误详情
-- Service 返回 { data, error }，不 throw
-- Route Handler 不写 try/catch
 
 ## 不生成
 - middleware（除非我要求）

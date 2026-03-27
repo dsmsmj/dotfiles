@@ -11,6 +11,29 @@ alwaysApply: true
 - 函数超 40 行拆分，不讨论
 - 注释只写 WHY，不写 WHAT
 
+```ts
+// ❌ any
+const parse = (data: any) => data.name
+
+// ✅ 用 unknown + 类型守卫
+const parse = (data: unknown): string => {
+  if (typeof data === 'object' && data !== null && 'name' in data) {
+    return (data as { name: string }).name
+  }
+  throw new Error('Invalid data')
+}
+
+// ❌ 40+ 行大函数
+function handleSubmit() { /* ...80 lines... */ }
+
+// ✅ 拆成步骤
+function handleSubmit() {
+  const data = validateForm()
+  const result = submitToAPI(data)
+  showFeedback(result)
+}
+```
+
 ## 命名
 - 组件: PascalCase
 - 函数/变量: camelCase
