@@ -1,24 +1,22 @@
 ---
-description: 重构流程，输入 /refactor 触发
+description: Refactor workflow; invoke with /refactor
 globs: []
 alwaysApply: false
 ---
 
-## 动手前必须回答
+## Answer before editing
 
-1. 这段代码的当前行为是什么？（一句话）
-2. 重构后行为会变吗？会/不会，如果会，哪里变？
-3. 有没有调用方会受影响？列出文件路径。
+1. What does this code do today? (one sentence)
+2. Will behavior change after refactor? Yes/no; if yes, how?
+3. Which call sites break? List paths.
 
-回答完再动手。
+Then implement.
 
-## 重构策略
+## Strategy
+- Prefer smallest change with stable public surface
+- If the API must change, provide a migration path
+- Do not touch unrelated “cleanup” in the same pass
 
-- 首选：最小改动，保持外部接口不变
-- 其次：改接口，但给我迁移路径
-- 禁止：顺手改"看不顺眼"的不相关代码
-
-## 输出格式
-
-先给改动摘要（改了什么，没改什么），再给完整代码。
-超过 50 行改动，分批给，每批是一个完整可运行状态。
+## Output
+- Short summary of what changed vs. what stayed the same, then code
+- If diff > ~50 lines, ship in batches; each batch must be runnable

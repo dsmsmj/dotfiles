@@ -1,25 +1,25 @@
 ---
-description: 生成 API Route + Service 层，输入 /api [资源] [动作] 触发
+description: API route + service scaffolding; invoke with /api [resource] [action]
 globs:
   - "app/api/**/*.ts"
   - "src/services/**/*.ts"
 alwaysApply: false
 ---
 
-## 分层规则
-参考 03-node.mdc 中的分层职责和错误处理规则，此处不重复。
+## Layering
+Follow `03-node.mdc` for responsibilities and error handling; not repeated here.
 
-## 生成顺序
-1. Zod schema（放 lib/validators/[resource].ts）
-2. Repository 函数（如果涉及新查询）
-3. Service 函数
-4. Route Handler
+## Generation order
+1. Zod schema → `lib/validators/[resource].ts`
+2. Repository helpers (if new queries)
+3. Service
+4. Route handler
 
-## 强制包含
-- 所有入参 Zod parse，失败返回 400 + 错误详情
+## Must include
+- Zod-parse all inputs; 400 with details on failure
 
-## 不生成
-- middleware（除非我要求）
-- 日志（我自己加）
-- jsdoc 注释
-- 测试文件（除非我要求）
+## Do not add
+- Middleware unless asked
+- Logging (user adds it)
+- JSDoc noise
+- Tests unless asked

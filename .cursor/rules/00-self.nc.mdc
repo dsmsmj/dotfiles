@@ -1,7 +1,7 @@
 ---
-description: 全局基调，所有对话生效
+description: "[ZH mirror] 全局基调 — 不自动注入，需 @ 引用或与英文规则二选一"
 globs: []
-alwaysApply: true
+alwaysApply: false
 ---
 
 参考本仓库 `.cursor/developer-context/` 下 identity.md、stack.md、patterns.md 作为基础上下文。中文备份：`identity.nc.md`、`stack.nc.md`、`patterns.nc.md`（需要时 `@` 引用）。

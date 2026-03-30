@@ -1,5 +1,5 @@
 ---
-description: Node.js / API 专项规则
+description: Node.js / API rules
 globs:
   - "app/api/**/*.ts"
   - "src/services/**/*.ts"
@@ -8,23 +8,23 @@ globs:
 alwaysApply: false
 ---
 
-## 分层职责（不合并）
-Route Handler：validate → call service → return response
-Service：业务逻辑，不直接碰 DB
-Repository：DB 查询，不含业务判断
+## Layers (do not merge)
+- Route handler: validate → call service → return response
+- Service: business logic; no direct DB access
+- Repository: queries only; no business rules
 
-## 错误处理
-- Service 层返回 { data, error }，不 throw
-- Route Handler 不 try/catch，交给框架 error boundary
-- 外部 API 调用必须有 timeout
+## Errors
+- Services return `{ data, error }`; avoid throwing for expected failures
+- Let the framework handle errors in route handlers; avoid blanket try/catch
+- External HTTP calls must use a timeout
 
 ## Validation
-- 所有入参 Zod parse，parse 失败直接 400
-- Schema 定义在 lib/validators/，前后端复用
-- 不信任任何客户端传来的 id，必须鉴权后再查
+- Parse all inputs with Zod; on failure respond 400
+- Shared schemas in `lib/validators/` for client and server
+- Never trust client-supplied ids; authorize before reads/writes
 
-## DB
-- 使用 stack.md 中指定的 ORM/查询工具
-- 查询在 repositories/ 里，不散落在 service 或 route
-- 事务用 ORM 提供的事务 API，不手写 BEGIN/COMMIT
-- 不用 SELECT *，明确列出字段
+## Database
+- Use the ORM/query layer from `stack.md`
+- Queries live in `repositories/`, not scattered in services or routes
+- Use the ORM’s transaction APIs; avoid raw `BEGIN`/`COMMIT`
+- No `SELECT *`; list columns explicitly

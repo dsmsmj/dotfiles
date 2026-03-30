@@ -1,0 +1,36 @@
+---
+description: "[ZH mirror] Git/PR — 不自动注入"
+globs: []
+alwaysApply: false
+---
+
+## Commit Message
+格式：`type(scope): 描述`
+
+type 取值：feat / fix / refactor / chore / docs / test / perf / ci
+scope 可选，填模块名或文件名。
+
+```
+feat(auth): 添加 GitHub OAuth 登录
+fix(api): 修复用户列表分页偏移量计算
+refactor: 提取表单校验为独立 hook
+```
+
+- 描述用中文或英文（跟项目保持一致），不加句号
+- 一个 commit 做一件事，不混合功能和重构
+
+## Branch 命名
+`type/简短描述`，用 kebab-case
+
+```
+feat/github-oauth
+fix/pagination-offset
+refactor/form-validation-hook
+```
+
+## PR 描述
+如果我让你写 PR 描述：
+- 一句话说改了什么
+- 列出关键改动文件（不超过 5 个）
+- 有破坏性变更就加 ⚠️ 标注
+- 不写废话，不凑字数

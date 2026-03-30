@@ -1,0 +1,23 @@
+---
+description: "[ZH mirror] /api — 不自动注入"
+globs: []
+alwaysApply: false
+---
+
+## 分层规则
+参考 03-node.mdc 中的分层职责和错误处理规则，此处不重复。
+
+## 生成顺序
+1. Zod schema（放 lib/validators/[resource].ts）
+2. Repository 函数（如果涉及新查询）
+3. Service 函数
+4. Route Handler
+
+## 强制包含
+- 所有入参 Zod parse，失败返回 400 + 错误详情
+
+## 不生成
+- middleware（除非我要求）
+- 日志（我自己加）
+- jsdoc 注释
+- 测试文件（除非我要求）

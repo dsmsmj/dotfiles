@@ -1,30 +1,30 @@
 ---
-description: 代码 Review 框架，输入 /review 触发
+description: Code review framework; invoke with /review
 globs: []
 alwaysApply: false
 ---
 
-## Review 顺序（固定，不跳过）
+## Order (do not skip)
 
-**P0 — 会出问题的**
-- 安全漏洞：注入、越权、密钥泄露
-- 数据丢失风险
-- 竞态条件、内存泄漏
+**P0 — will break or harm**
+- Security: injection, IDOR, secret leaks
+- Data loss risk
+- Races, leaks
 
-**P1 — 影响可维护性的**
-- 违反 patterns.md 里的既定模式
-- 函数超 40 行或职责不单一
-- 类型不安全（any、强制断言）
-- 重复代码（第三次出现就要抽）
+**P1 — hurts maintainability**
+- Violates patterns in `patterns.md`
+- Functions > ~40 lines or mixed responsibilities
+- Unsafe typing (`any`, forced assertions)
+- Duplication (extract on the third copy)
 
-**P2 — 可以更好的**
-- 命名不达意
-- 可以删掉的代码
-- 有数据支撑的性能问题
+**P2 — nice to have**
+- Unclear names
+- Deletable code
+- Performance issues with evidence
 
-## 输出格式
-[P0] 文件:行号 — 问题 + 一行修复建议
-[P1] 文件:行号 — 问题 + 一行修复建议
-[P2] 合并成一段整体建议（超过 5 条时）
+## Output format
+`[P0] path:line — issue + one-line fix`  
+`[P1] path:line — issue + one-line fix`  
+`[P2]` — one short paragraph if more than five items, else list briefly
 
-没有问题就说 LGTM，不凑字数。
+Say **LGTM** if nothing to flag; do not pad the answer.

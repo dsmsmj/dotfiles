@@ -1,33 +1,33 @@
 # Proven Patterns
 
-## Data fetching（Next.js）
-Server Component 直接 async/await，不用 useEffect + fetch。
-Client 侧用 TanStack Query，key 格式：['resource', id, filters]
+## Data fetching (Next.js)
+- Server Components: async/await in the component—no `useEffect` + `fetch` for initial data
+- Client: TanStack Query with keys like `['resource', id, filters]`
 
 ## Error handling
-Result 模式：返回 { data, error }，不 throw。
-边界用 Next.js error.tsx 兜底。
+- Result style: return `{ data, error }`; avoid throwing for expected failures
+- Route-level failures: rely on `error.tsx` where appropriate
 
-## Form → API 流程
-RHF 收集 → Zod parse（client）→ fetch → Zod parse（server）→ DB
-两端用同一个 schema，放 lib/validators/xxx.ts
+## Form → API
+RHF → Zod (client) → fetch → Zod (server) → DB  
+One schema file under `lib/validators/<feature>.ts` shared both ends.
 
-## 组件拆分原则
-超过 150 行就拆。拆分信号：
-- 有自己的状态 → 独立组件
-- 可以被复用 → 放 components/ui/
-- 业务逻辑 → 放 components/features/[domain]/
+## Component splits
+Split around ~150 lines. Signals:
+- Own state boundary → new component
+- Reusable visual → `components/ui/`
+- Domain logic → `components/features/<domain>/`
 
-## API 设计
-Route Handler 只做：validate → call service → return response
-业务逻辑全在 services/，数据访问全在 repositories/
+## API shape
+Route handler: validate → service → response  
+Business logic stays in `services/`; data access in `repositories/`.
 
-## 重构顺序
-1. 加测试覆盖当前行为
-2. 重构
-3. 测试通过 = 完成
-跳过步骤1时，明确告诉我风险。
+## Refactor order
+1. Add tests for current behavior
+2. Refactor
+3. Green tests = done  
+If step 1 is skipped, call out the risk explicitly.
 
-## Python 脚本结构
-typer app → 参数验证 → 业务函数（纯函数，可测试）→ 副作用最后执行
-错误用 typer.echo(err, err=True) + raise typer.Exit(1)
+## Python CLI layout
+Typer app → validated args → pure business functions → side effects last  
+Errors: `typer.echo(err, err=True)` + `raise typer.Exit(1)`

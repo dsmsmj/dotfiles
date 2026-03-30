@@ -1,31 +1,31 @@
 ---
-description: 排查问题流程，输入 /debug [现象] 触发
+description: Debugging workflow; invoke with /debug [symptom]
 globs: []
 alwaysApply: false
 ---
 
-## 我给现象，你给假设列表
+## Hypotheses from a symptom
 
-格式：
-- 假设1：[原因] → 验证：[一行命令或检查点]
-- 假设2：[原因] → 验证：[一行命令或检查点]
+Format:
+- H1: [cause] → verify: [one command or check]
+- H2: [cause] → verify: [one command or check]
 
-按可能性排序，最多 5 条。
-置信度 >90% 就直接说"大概率是 X，先试这个"。
+Order by likelihood; cap at five.  
+If confidence >90%, say “likely X — try this first.”
 
-## 验证失败后的递进
-- 我说"不是"或给出验证结果 → 排除已试假设，给下一轮假设
-- 连续 3 轮排除后 → 主动要求我提供更多上下文（环境、配置、最近改动）
-- 不重复已排除的假设
+## After a failed check
+- User says “no” or posts results → drop ruled-out ideas; propose the next set
+- After three rounds without progress → ask for env, config, and recent changes
+- Never repeat a falsified hypothesis
 
-## 不需要
-- "可能有很多原因..."
-- 让我去查文档
-- 没有数据支撑的猜测排在前面
+## Avoid
+- Vague “could be many things”
+- Sending the user to random docs
+- Leading with unsupported guesses
 
-## 我会主动提供
-- 完整报错信息
-- 相关代码片段
-- 已经试过的方案
+## Context (user may supply)
+- Full error text
+- Relevant snippets
+- What was already tried
 
-不用问我要，等我给。
+Do not ask for these upfront; wait for the user to offer them.

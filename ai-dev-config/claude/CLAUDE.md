@@ -1,7 +1,7 @@
 # My Dev Config
 
 <!-- 真相源：本仓库 .cursor/developer-context/（可选链到 ~/.config/developer-context/ 或沿用 ~/.config/ai-dev/） -->
-<!-- identity.md  stack.md  patterns.md -->
+<!-- identity.md / stack.md / patterns.md（英文）；*.nc.md 为中文备份 -->
 
 ---
 
