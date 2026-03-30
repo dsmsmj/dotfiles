@@ -5,39 +5,30 @@
 ## 结构
 
 ```
+[本仓库 dotfiles]/
+├── .cursor/
+│   ├── developer-context/   ← 真相源（identity / stack / patterns，内容在这里改）
+│   └── rules/               ← Cursor 规则（可 symlink 到 ~/.cursor/rules）
+│       ├── 00-self.mdc      全局基调（alwaysApply: true）
+│       ├── 01-code.mdc      …
+│       └── …
+│
+ai-dev-config/                 ← 与 .cursor 同步的模板副本（cursor-rules、claude）
+├── cursor-rules/
+└── claude/CLAUDE.md
+
 ~/
-├── .config/ai-dev/          ← 真相源（内容在这里改）
-│   ├── identity.md          你是谁：沟通方式、价值观、硬约束
-│   ├── stack.md             你用什么：技术选型、约定
-│   └── patterns.md          你怎么做：已验证的解法模式
-│
-├── .cursor/rules/           ← Cursor 全局规则（symlink 到这个 repo）
-│   ├── 00-self.mdc          全局基调（alwaysApply: true）
-│   ├── 01-code.mdc          代码硬约束（alwaysApply: true）
-│   ├── 02-react.mdc         React/Next（按 .tsx 触发）
-│   ├── 03-node.mdc          Node/API（按路径触发）
-│   ├── 04-python.mdc        Python（按 .py 触发）
-│   ├── 05-review.mdc        /review 触发
-│   ├── skill-component.mdc  /component 触发
-│   ├── skill-api-route.mdc  /api 触发
-│   ├── skill-refactor.mdc   /refactor 触发
-│   └── skill-debug.mdc      /debug 触发
-│
-├── .claude/
-│   └── CLAUDE.md            ← Claude Code 全局配置（symlink）
-│
-└── [project]/
-    └── .cursor/rules/
-        └── project.mdc      ← 只写这个项目和全局的差异
+├── .claude/CLAUDE.md        ← symlink 到本仓库 ai-dev-config/claude/CLAUDE.md
+└── [project]/.cursor/rules/project.mdc   ← 仅项目差异
 ```
 
 ## 部署
 
-克隆本仓库后，在每台机器上自行把文件链到（或复制到）对应目录即可：
+克隆本仓库后，在每台机器上自行链到（或复制到）对应目录即可：
 
-- `ai-dev/*.md` → `~/.config/ai-dev/`
-- `cursor-rules/*.mdc` → `~/.cursor/rules/`
-- `claude/CLAUDE.md` → `~/.claude/CLAUDE.md`
+- 可选：`.cursor/developer-context/` → `~/.config/developer-context/`（或沿用既有 `~/.config/ai-dev/`）
+- `ai-dev-config/cursor-rules/*.mdc` 或直接用 `.cursor/rules/*.mdc` → `~/.cursor/rules/`
+- `ai-dev-config/claude/CLAUDE.md` → `~/.claude/CLAUDE.md`
 
 macOS/Linux 用 `ln -s`；Windows 可用 junction/复制，视权限而定。
 

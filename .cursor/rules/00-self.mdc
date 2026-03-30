@@ -4,7 +4,7 @@ globs: []
 alwaysApply: true
 ---
 
-参考 ~/.config/ai-dev/identity.md、stack.md、patterns.md 作为基础上下文。
+参考本仓库 `.cursor/developer-context/` 下 identity.md、stack.md、patterns.md 作为基础上下文。
 
 ## Output rules
 生成代码时：

@@ -1,9 +1,7 @@
 # My Dev Config
 
-<!-- 真相源：直接读这三个文件 -->
-<!-- ~/.config/ai-dev/identity.md  -->
-<!-- ~/.config/ai-dev/stack.md     -->
-<!-- ~/.config/ai-dev/patterns.md  -->
+<!-- 真相源：本仓库 .cursor/developer-context/（可选链到 ~/.config/developer-context/ 或沿用 ~/.config/ai-dev/） -->
+<!-- identity.md  stack.md  patterns.md -->
 
 ---
 
