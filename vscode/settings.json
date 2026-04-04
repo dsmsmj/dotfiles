@@ -54,7 +54,6 @@
     "maven.executable.path": "C:\\java\\apache-maven-3.9.11-bin\\apache-maven-3.9.11\\bin\\mvn.cmd",
     "maven.settingsFile": "C:\\java\\apache-maven-3.9.11-bin\\apache-maven-3.9.11\\.m2\\settings-corp.xml",
     "maven.excludedFolders": [
-
         "**/.*",
         "**/node_modules",
         "**/target",
@@ -84,5 +83,16 @@
     "cursor.general.disableHttp2": true,
     "http.proxyStrictSSL": false,
     "gitlens.views.fileHistory.mode": "contributors",
-    "chat.viewSessions.orientation": "stacked"
+    "chat.viewSessions.orientation": "stacked",
+    "http.proxy": "http://127.0.0.1:1082",
+    "claudeCode.environmentVariables": [
+        {
+            "name": "HTTPS_PROXY",
+            "value": "http://127.0.0.1:1082"
+        },
+        {
+            "name": "HTTP_PROXY",
+            "value": "http://127.0.0.1:1082"
+        }
+    ]
 }
