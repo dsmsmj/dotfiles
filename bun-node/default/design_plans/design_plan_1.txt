@@ -1,0 +1,26 @@
+### Design Plan for Liquid Tech Style
+
+**Image Dimensions**: 1080×1920 pixels  
+**Language**: Chinese  
+**Font**: Source Han Sans (modern sans-serif)
+
+#### Background
+- Soft blue-green gradient with abstract liquid wave structures to create dynamic visual flow.
+
+#### Top Section ("Traditional vs Large Model")
+- Two symmetrical liquid circles with black-and-white line icons: "Book" for traditional and "Data Flow" for large model.
+- Minimal text labels in Chinese, positioned above each circle.
+
+#### Middle Section ("Five-Stage Framework")
+- Curved path connecting five circular nodes, each containing a simple icon (e.g., lightbulb, magnifying glass).
+- Icons spaced evenly along the curve, ensuring smooth visual progression.
+
+#### Bottom Section ("Time Allocation + Golden Rules")
+- Bar chart displaying percentages: "40%," "30%," "20%," "10%" with corresponding small icons (clock, question mark, brain).
+- Summary phrase below chart: “你是研究者，不是学生” (You are a researcher, not a student).
+
+#### Visual Order and Layout
+- Clear vertical hierarchy: top, middle, and bottom sections separated by balanced whitespace.
+- Icons and text aligned for optimal readability and aesthetic harmony.  
+
+This plan adheres strictly to the fluidity and futuristic essence of the Liquid Tech style while maintaining clarity and logical structure.

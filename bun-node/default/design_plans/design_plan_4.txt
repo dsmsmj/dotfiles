@@ -1,0 +1,30 @@
+### Design Plan for Minimalist Flat Style
+
+**Image Dimensions**: 1080×1920 pixels  
+**Language**: Chinese  
+**Font**: Alibaba PuHuiTi  
+
+#### Background & Layout
+- Use pure white background with a single blue tone as the primary color.
+- All elements are designed in flat style, ensuring minimal visual distractions.
+
+#### Top Section: "Traditional vs Large Model"
+- Two rectangular boxes placed centrally at the top:
+  - Left box (Traditional): Filled with gray, containing simplified linear icons.
+  - Right box (Large Model): Filled with blue, also with simplified linear icons.
+
+#### Middle Section: "Five-Stage Framework"
+- Five square cards arranged horizontally in the middle section:
+  - Each card includes one keyword and its corresponding icon.
+  - Cards are evenly distributed with sufficient spacing for clarity.
+
+#### Bottom Section: "Time Allocation + Golden Rule"
+- Bar chart positioned close to the bottom edge:
+  - Bars labeled with percentages “40%”, “30%”, “20%”, “10%”.
+  - Specific values displayed at the end of each bar.
+- Below the bar chart, include the golden rule text: “提问驱动学习”.
+
+#### Visual Order & Hierarchy
+- Ensure clear information hierarchy from top to bottom.
+- Maintain balanced spacing between sections for smooth readability.
+- Align all elements centrally or symmetrically to enhance the minimalist aesthetic.
