@@ -9,8 +9,8 @@ import type { Agent } from './types'
 import './App.css'
 
 export default function App() {
-  const [agent, setAgent] = useState<Agent>('qwen')
-  const [sessionId, setSessionId] = useState('q01')
+  const [agent, setAgent] = useState<Agent>('claude')
+  const [sessionId, setSessionId] = useState('c01')
   const [sessions, setSessions] = useState<string[]>([])
 
   const {

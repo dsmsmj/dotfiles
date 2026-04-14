@@ -17,7 +17,7 @@ export const PROJECT_ROOT =
 export const DATA_ROOT =
   process.env.ACPX_DATA_ROOT ?? resolve(__dirname, '..', 'data')
 
-export const PORT = Number(process.env.PORT ?? 9000)
+export const PORT = Number(process.env.PORT ?? 9001)
 
 // Ensure required directories exist
 mkdirSync(DATA_ROOT, { recursive: true })
