@@ -1,0 +1,5 @@
+# Ignore bun-node directory
+bun-node/
+
+# Ignore acpx-demo directory
+acpx-demo/
