@@ -17,7 +17,7 @@ export const PROJECT_ROOT =
 export const DATA_ROOT =
   process.env.ACPX_DATA_ROOT ?? resolve(__dirname, '..', 'data')
 
-export const PORT = Number(process.env.PORT ?? 9001)
+export const PORT = Number(process.env.PORT ?? 9003)
 
 // Ensure required directories exist
 mkdirSync(DATA_ROOT, { recursive: true })
@@ -30,7 +30,7 @@ export const sessionStore: AcpSessionStore = createFileSessionStore({
 })
 
 export const agentRegistry = createAgentRegistry()
-
+console.log('PROJECT_ROOT',PROJECT_ROOT)
 export const runtime = createAcpRuntime({
   cwd: PROJECT_ROOT,
   sessionStore,
