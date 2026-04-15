@@ -16,10 +16,4 @@ This project was created using `bun init` in bun v1.3.5. [Bun](https://bun.com) 
 
 ## Skills
 
-Project skills are maintained in `.claude/skills` and can be mirrored for Codex with:
-
-```bash
-npm run sync:skills
-```
-
-This sync writes to `.codex/skills` and skips local-only directories such as `.venv` and `__pycache__`.
+Project skills live in `.codex/skills`.

@@ -1,9 +1,7 @@
-Design Plan:  
-- **Style**: Geometric Floating Style.  
-- **Background**: Light blue gradient with subtle grid texture for enhanced depth.  
-- **Top Section**: Symmetrical rectangular modules, left in dark gray (traditional mode + simple icon), right in bright blue (large model mode + complex icon). Text: "传统 vs 大模型".  
-- **Middle Section**: Five floating circles with soft shadows, horizontally aligned and connected by arrows. Each circle contains a simplified icon. Text labels for the five-stage framework placed neatly below each circle.  
-- **Bottom Section**: Circular pie chart centered at the lower part, displaying proportions "40%," "30%," "20%," "10%" in distinct colors. Three small tags around the chart labeled "提问," "思考," "行动."  
-- **Typography**: Chinese language, using Foundertype Lanting Xian Hei font. Minimalist and clear.  
-- **Dimensions**: 1080×1920 pixels.  
-- **Hierarchy & Flow**: Balanced spacing between sections; top modules centered, middle framework slightly above center, bottom pie chart anchored near the base. Clean alignment and logical flow maintained throughout.
+Design Plan for Minimalist Futuristic Style:
+
+Create a 1920x1080 pixel image featuring a pure black background with precisely arranged small white dots representing stars. Position a simplified vector-style Earth on the left side, rendered in low-saturation gray for land and deep blue for oceans, maintaining clear geometric contours without complex textures. Place a similarly styled moon on the upper right, three times smaller than Earth, in regular gray-white tones.
+
+Connect both celestial bodies with a straight light trail starting from Earth's center to the moon's center in cool light blue, gradually tapering towards the moon for perspective effect. Apply subtle radial gradients around Earth and moon for depth while ensuring all elements align perfectly with grid proportions.
+
+If text is required, use Roboto font in light gray color, increased letter spacing, placed centrally at the bottom with 80% transparency. Ensure all elements maintain strict geometric precision and minimalistic aesthetics throughout the composition.

@@ -22,13 +22,13 @@ export async function handleSessions(req: Request, url: URL): Promise<Response |
 
   // GET /api/sessions?agent=
   if (req.method === 'GET' && url.pathname === '/api/sessions') {
-    const agent = url.searchParams.get('agent') ?? 'qwen'
+    const agent = url.searchParams.get('agent') ?? 'claude'
     return json({ sessions: listSessions(agent) })
   }
 
   // GET /api/session-messages?agent=&sessionId=
   if (req.method === 'GET' && url.pathname === '/api/session-messages') {
-    const agent = url.searchParams.get('agent') ?? 'qwen'
+    const agent = url.searchParams.get('agent') ?? 'claude'
     const sessionId = url.searchParams.get('sessionId') ?? ''
     if (!sessionId.trim()) return json({ messages: [] })
     return json({ messages: loadSessionMessages(agent, sessionId) })
@@ -36,7 +36,7 @@ export async function handleSessions(req: Request, url: URL): Promise<Response |
 
   // GET /api/session-state?agent=&sessionId=
   if (req.method === 'GET' && url.pathname === '/api/session-state') {
-    const agent = url.searchParams.get('agent') ?? 'qwen'
+    const agent = url.searchParams.get('agent') ?? 'claude'
     const sessionId = url.searchParams.get('sessionId') ?? 'default'
     const key = handleKey(agent, sessionId)
     const handle = handles.get(key)
@@ -57,7 +57,7 @@ export async function handleSessions(req: Request, url: URL): Promise<Response |
   // POST /api/sessions/new  { agent, sessionId }
   if (req.method === 'POST' && url.pathname === '/api/sessions/new') {
     const body = await readJsonBody(req)
-    const agent = str(body, 'agent') ?? 'qwen'
+    const agent = str(body, 'agent') ?? 'claude'
     const sessionId = str(body, 'sessionId')
     if (!sessionId?.trim()) return badRequest('sessionId required')
     try {
@@ -71,7 +71,7 @@ export async function handleSessions(req: Request, url: URL): Promise<Response |
   // POST /api/sessions/close  { agent, sessionId }
   if (req.method === 'POST' && url.pathname === '/api/sessions/close') {
     const body = await readJsonBody(req)
-    const agent = str(body, 'agent') ?? 'qwen'
+    const agent = str(body, 'agent') ?? 'claude'
     const sessionId = str(body, 'sessionId')
     if (!sessionId?.trim()) return badRequest('sessionId required')
     const key = handleKey(agent, sessionId)

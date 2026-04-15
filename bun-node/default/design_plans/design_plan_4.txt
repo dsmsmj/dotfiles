@@ -1,30 +1,24 @@
-### Design Plan for Minimalist Flat Style
+### Design Plan for Retro Film Style Image
 
-**Image Dimensions**: 1080×1920 pixels  
-**Language**: Chinese  
-**Font**: Alibaba PuHuiTi  
+**Background**:  
+- Gradient from dark brown to deep green, with evenly distributed noise for a vintage film grain effect.  
+- Irregularly scattered stars, some with subtle trailing effects to mimic long-exposure photography.  
 
-#### Background & Layout
-- Use pure white background with a single blue tone as the primary color.
-- All elements are designed in flat style, ensuring minimal visual distractions.
+**Earth and Moon**:  
+- Earth rendered in low-resolution with intentionally reduced clarity and desaturated colors (50% original tones) for an aged photograph look. A blurred orange halo surrounds the Earth to simulate reflected sunlight.  
+- Moon designed with matte texture, simplified surface details, and gray-brown tones blending harmoniously with the background.  
 
-#### Top Section: "Traditional vs Large Model"
-- Two rectangular boxes placed centrally at the top:
-  - Left box (Traditional): Filled with gray, containing simplified linear icons.
-  - Right box (Large Model): Filled with blue, also with simplified linear icons.
+**Light Trail**:  
+- Dashed line connecting Earth and Moon, colored light brown to enhance the retro aesthetic.  
 
-#### Middle Section: "Five-Stage Framework"
-- Five square cards arranged horizontally in the middle section:
-  - Each card includes one keyword and its corresponding icon.
-  - Cards are evenly distributed with sufficient spacing for clarity.
+**Composition**:  
+- Earth positioned on the left side, slightly off-center, with clear visibility of its desaturated landmasses and oceans.  
+- Moon placed higher and to the right, maintaining proportional distance and size relative to Earth.  
 
-#### Bottom Section: "Time Allocation + Golden Rule"
-- Bar chart positioned close to the bottom edge:
-  - Bars labeled with percentages “40%”, “30%”, “20%”, “10%”.
-  - Specific values displayed at the end of each bar.
-- Below the bar chart, include the golden rule text: “提问驱动学习”.
+**Text (if applicable)**:  
+- Serif font (Bodoni), color set to off-white, centered at the top. Increased line spacing to align with the vintage theme. Text language: Spanish.  
 
-#### Visual Order & Hierarchy
-- Ensure clear information hierarchy from top to bottom.
-- Maintain balanced spacing between sections for smooth readability.
-- Align all elements centrally or symmetrically to enhance the minimalist aesthetic.
+**Image Dimensions**:  
+- 1920x1080 pixels.  
+
+This design plan ensures a cohesive retro film style that evokes nostalgia while presenting Earth and Moon from a cosmic perspective.

@@ -30,7 +30,8 @@ export async function handleRun(
   if (req.method !== 'POST' || url.pathname !== '/api/run') return null
 
   const body = await readJsonBody(req)
-  const agent = str(body, 'agent') ?? 'qwen'
+  console.log('body', body)
+  const agent = str(body, 'agent') ?? 'claude'
   const sessionId = str(body, 'sessionId') ?? 'default'
   const prompt = str(body, 'prompt') ?? ''
   const timeoutMs = num(body, 'timeoutMs')
@@ -121,7 +122,7 @@ export async function handleExec(
   if (req.method !== 'POST' || url.pathname !== '/api/exec') return null
 
   const body = await readJsonBody(req)
-  const agent = str(body, 'agent') ?? 'qwen'
+  const agent = str(body, 'agent') ?? 'claude'
   const prompt = str(body, 'prompt') ?? ''
   const timeoutMs = num(body, 'timeoutMs')
 

@@ -5,8 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "bun run index.ts",
-    "start": "node index.ts",
-    "sync:skills": "node scripts/sync-skills.mjs"
+    "start": "node index.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",

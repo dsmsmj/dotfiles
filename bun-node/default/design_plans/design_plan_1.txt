@@ -1,26 +1,7 @@
-### Design Plan for Liquid Tech Style
+**Design Plan for "Deep Cosmic Elegance" Style**
 
-**Image Dimensions**: 1080×1920 pixels  
-**Language**: Chinese  
-**Font**: Source Han Sans (modern sans-serif)
+Create a 1920x1080 pixel image featuring an immersive cosmic scene with Earth and Moon as central elements. Background transitions from deep blue to black, layered with multi-colored nebula textures (pale purple, cyan, gold) processed with Gaussian blur for depth. Stars vary in density, creating distinct Milky Way clusters and empty spaces.
 
-#### Background
-- Soft blue-green gradient with abstract liquid wave structures to create dynamic visual flow.
+Position Earth slightly left of center with detailed surface features - warm green landmasses and deep blue oceans, surrounded by subtle aurora glow. Place Moon smaller and dimmer in the upper right quadrant with realistic texture but reduced brightness. Connect both celestial bodies with a translucent silver arc (30% opacity) representing their gravitational link.
 
-#### Top Section ("Traditional vs Large Model")
-- Two symmetrical liquid circles with black-and-white line icons: "Book" for traditional and "Data Flow" for large model.
-- Minimal text labels in Chinese, positioned above each circle.
-
-#### Middle Section ("Five-Stage Framework")
-- Curved path connecting five circular nodes, each containing a simple icon (e.g., lightbulb, magnifying glass).
-- Icons spaced evenly along the curve, ensuring smooth visual progression.
-
-#### Bottom Section ("Time Allocation + Golden Rules")
-- Bar chart displaying percentages: "40%," "30%," "20%," "10%" with corresponding small icons (clock, question mark, brain).
-- Summary phrase below chart: “你是研究者，不是学生” (You are a researcher, not a student).
-
-#### Visual Order and Layout
-- Clear vertical hierarchy: top, middle, and bottom sections separated by balanced whitespace.
-- Icons and text aligned for optimal readability and aesthetic harmony.  
-
-This plan adheres strictly to the fluidity and futuristic essence of the Liquid Tech style while maintaining clarity and logical structure.
+Apply radial gradients to Earth and Moon for enhanced dimensionality. If text is included, use white Futura font at 80% opacity, centered at bottom. Ensure all elements align with English language content requirements while maintaining artistic cohesion.

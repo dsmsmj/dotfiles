@@ -1,26 +1,3 @@
-### Design Plan for "Natural Ecology Style"
+Design Plan for "Dreamy Watercolor Style":
 
-**Image Dimensions**: 1080×1920 pixels  
-**Language**: Chinese  
-**Font Choice**: Rounded sans-serif or handwritten style for warmth and approachability  
-
-#### **Top Section - Traditional vs Large Model**  
-- Two tree silhouettes placed centrally:  
-  - Left tree (Traditional): Sparse, bare branches in muted tones.  
-  - Right tree (Large Model): Lush, vibrant green with detailed foliage.  
-- Minimal text labels integrated into the silhouettes to indicate "传统" and "大模型".  
-
-#### **Middle Section - Five-Stage Framework**  
-- A vine growing from left to right across the canvas, symbolizing growth and progression.  
-- Each stage represented by a flower or fruit icon containing simple line-drawn symbols (e.g., lightbulb, magnifying glass).  
-- Icons spaced evenly along the vine path, connected subtly by thin stems or leaves for flow.  
-
-#### **Bottom Section - Time Allocation + Golden Rules**  
-- Line graph centered at the bottom, showing percentages "40%," "30%," "20%," and "10%" marked on each node of the line.  
-- Three leaves attached to key points on the line graph, labeled with golden rules: "问", "学", "用".  
-- Soft green gradients and organic shapes (like water droplets) subtly decorate the background without overpowering the data.  
-
-#### **Overall Visual Order**  
-- Balanced composition with clear hierarchy: Trees at the top, vine framework flowing through the middle, and line graph grounded at the bottom.  
-- Natural textures (leaf veins, soft gradients) enhance depth while maintaining an inviting, sustainable aesthetic.  
-- Ample white space around elements ensures clarity and focus on core content.
+Create a 1920x1080 pixel artwork with French text, featuring Earth and Moon from a cosmic perspective. Background showcases deep blue watercolor wash transitioning to purple-red and orange-yellow hues, resembling a celestial sunset. Earth appears semi-transparent with soft, hand-painted contours where land and ocean boundaries blur naturally. Surround Earth with a subtle pinkish-purple halo for a dreamlike effect. Render Moon in abstract hand-drawn style with warm gray tones and textured surface, maintaining artistic contrast against the background. Connect both celestial bodies with irregular, pastel pink or yellow curves mimicking meteor trails. Apply soft edge feathering to both Earth and Moon for seamless background integration. If text is included, use Pacifico handwritten font in light gold color, positioned at bottom-right corner with slight tilt for dynamic effect. Ensure all watercolor transitions are achieved using natural edge bleeding techniques for authentic painterly appearance.

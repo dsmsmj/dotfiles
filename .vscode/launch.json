@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Frontend",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run dev",
+      "cwd": "${workspaceFolder}/acpx-demo"
+    },
+    {
+      "name": "Launch Backend",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "bun run dev",
+      "cwd": "${workspaceFolder}/bun-node"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Launch Fullstack",
+      "configurations": ["Launch Frontend", "Launch Backend"],
+      "stopAll": true
+    }
+  ]
+}

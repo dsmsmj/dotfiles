@@ -35,7 +35,7 @@ export async function handleControl(req: Request, url: URL): Promise<Response | 
 
   // GET /api/status?agent=&sessionId=
   if (req.method === 'GET' && url.pathname === '/api/status') {
-    const agent = url.searchParams.get('agent') ?? 'qwen'
+    const agent = url.searchParams.get('agent') ?? 'claude'
     const sessionId = url.searchParams.get('sessionId') ?? 'default'
     const key = handleKey(agent, sessionId)
     const handle = handles.get(key)
@@ -51,7 +51,7 @@ export async function handleControl(req: Request, url: URL): Promise<Response | 
   // POST /api/cancel  { agent, sessionId }
   if (req.method === 'POST' && url.pathname === '/api/cancel') {
     const body = await readJsonBody(req)
-    const agent = str(body, 'agent') ?? 'qwen'
+    const agent = str(body, 'agent') ?? 'claude'
     const sessionId = str(body, 'sessionId') ?? 'default'
     const key = handleKey(agent, sessionId)
 
@@ -70,7 +70,7 @@ export async function handleControl(req: Request, url: URL): Promise<Response | 
   // POST /api/mode  { agent, sessionId, mode }
   if (req.method === 'POST' && url.pathname === '/api/mode') {
     const body = await readJsonBody(req)
-    const agent = str(body, 'agent') ?? 'qwen'
+    const agent = str(body, 'agent') ?? 'claude'
     const sessionId = str(body, 'sessionId') ?? 'default'
     const mode = str(body, 'mode')
     if (!mode?.trim()) return badRequest('mode required')
@@ -87,7 +87,7 @@ export async function handleControl(req: Request, url: URL): Promise<Response | 
   // POST /api/config  { agent, sessionId, key, value }
   if (req.method === 'POST' && url.pathname === '/api/config') {
     const body = await readJsonBody(req)
-    const agent = str(body, 'agent') ?? 'qwen'
+    const agent = str(body, 'agent') ?? 'claude'
     const sessionId = str(body, 'sessionId') ?? 'default'
     const key = str(body, 'key')
     const value = str(body, 'value')

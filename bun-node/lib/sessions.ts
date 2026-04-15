@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs'
 import { join, extname, normalize } from 'node:path'
 import { agentRegistry, DATA_ROOT } from './runtime.ts'
-import type { UiMessage, UiSegment } from '../types.ts'
+import type { ImageArtifact, ImageGenerationResult, TextArtifact, UiMessage, UiSegment } from '../types.ts'
 
 const IMAGE_EXTS = new Set(['.png', '.jpg', '.jpeg', '.gif', '.webp'])
 
@@ -37,6 +37,120 @@ export function listImages(sessionId: string): string[] {
     .filter(f => IMAGE_EXTS.has(extname(f).toLowerCase()))
     .sort()
     .map(f => `/sessions/${sessionId}/output/${f}`)
+}
+
+function imageArtifactId(sessionId: string, fileName: string): string {
+  return `img_${sessionId}_${fileName.replace(/[^a-zA-Z0-9]+/g, '_')}`
+}
+
+function maybeReadBase64(fullPath: string, includeData: boolean): Pick<ImageArtifact, 'encoding' | 'data'> {
+  if (!includeData) return {}
+  const bytes = readFileSync(fullPath)
+  return {
+    encoding: 'base64',
+    data: Buffer.from(bytes).toString('base64'),
+  }
+}
+
+export function listImageArtifacts(sessionId: string, includeData = false): ImageArtifact[] {
+  const outputDir = join(DATA_ROOT, 'sessions', sessionId, 'output')
+  if (!existsSync(outputDir)) return []
+
+  return readdirSync(outputDir)
+    .filter(fileName => IMAGE_EXTS.has(extname(fileName).toLowerCase()))
+    .sort()
+    .map(fileName => {
+      const fullPath = join(outputDir, fileName)
+      const stats = statSync(fullPath)
+      const ext = extname(fileName).toLowerCase()
+
+      return {
+        id: imageArtifactId(sessionId, fileName),
+        kind: 'image',
+        mimeType: MIME_MAP[ext] ?? 'application/octet-stream',
+        uri: `/sessions/${sessionId}/output/${fileName}`,
+        fileName,
+        sizeBytes: stats.size,
+        metadata: {
+          sessionId,
+          source: 'session-output',
+        },
+        ...maybeReadBase64(fullPath, includeData),
+      } satisfies ImageArtifact
+    })
+}
+
+// Known text files produced by skills, in priority order.
+// The first entry whose file exists is used as revisedPrompt.
+const TEXT_ARTIFACT_FILES = [
+  { fileName: 'design_concept.txt', role: 'concept' },
+  { fileName: 'design_strategy.txt', role: 'strategy' },
+] as const
+
+function textArtifactId(sessionId: string, fileName: string): string {
+  return `txt_${sessionId}_${fileName.replace(/[^a-zA-Z0-9]+/g, '_')}`
+}
+
+export function listTextArtifacts(sessionId: string): TextArtifact[] {
+  const sessionDir = join(DATA_ROOT, 'sessions', sessionId)
+  const artifacts: TextArtifact[] = []
+
+  for (const { fileName, role } of TEXT_ARTIFACT_FILES) {
+    const fullPath = join(sessionDir, fileName)
+    if (!existsSync(fullPath) || !statSync(fullPath).isFile()) continue
+    const text = readFileSync(fullPath, 'utf-8')
+    if (!text.trim()) continue
+    artifacts.push({
+      id: textArtifactId(sessionId, fileName),
+      kind: 'text',
+      fileName,
+      text,
+      metadata: { sessionId, role, source: 'session-output' },
+    })
+  }
+
+  // Include individual design plans from the design_plans/ subdir
+  const plansDir = join(sessionDir, 'design_plans')
+  if (existsSync(plansDir) && statSync(plansDir).isDirectory()) {
+    const planFiles = readdirSync(plansDir)
+      .filter(f => f.endsWith('.txt'))
+      .sort()
+    for (const fileName of planFiles) {
+      const fullPath = join(plansDir, fileName)
+      if (!statSync(fullPath).isFile()) continue
+      const text = readFileSync(fullPath, 'utf-8')
+      if (!text.trim()) continue
+      const qualifiedName = `design_plans/${fileName}`
+      artifacts.push({
+        id: textArtifactId(sessionId, qualifiedName),
+        kind: 'text',
+        fileName: qualifiedName,
+        text,
+        metadata: { sessionId, role: 'plan', source: 'session-output' },
+      })
+    }
+  }
+
+  return artifacts
+}
+
+export function buildImageGenerationResult(sessionId: string, includeData = false): ImageGenerationResult {
+  const imageArtifacts = listImageArtifacts(sessionId, includeData)
+  const textArtifacts = listTextArtifacts(sessionId)
+
+  // Use design_concept.txt as revisedPrompt if available
+  const conceptArtifact = textArtifacts.find(a => a.fileName === 'design_concept.txt')
+
+  const artifacts = [...imageArtifacts, ...textArtifacts]
+  return {
+    type: 'image_generation_result',
+    status: imageArtifacts.length > 0 ? 'succeeded' : 'failed',
+    revisedPrompt: conceptArtifact?.text,
+    artifacts,
+    notes: imageArtifacts.length > 0
+      ? ['Returned session image and text artifacts as structured output.']
+      : ['No generated images were found for this session.'],
+  }
 }
 
 function extractUserContentText(content: unknown): string {
