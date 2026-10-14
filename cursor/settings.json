@@ -1,0 +1,16 @@
+{
+    "window.autoDetectColorScheme": true,
+    "totalTypeScript.hideAllTips": false,
+    "totalTypeScript.hideBasicTips": false,
+    "terminal.integrated.allowedLinkSchemes": [
+        "file",
+        "http",
+        "https",
+        "mailto",
+        "vscode",
+        "vscode-insiders",
+        "docker-desktop"
+    ],
+    "http.proxy": "http://127.0.0.1:7897",
+    "diffEditor.ignoreTrimWhitespace": false
+}

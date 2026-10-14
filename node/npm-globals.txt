@@ -1,0 +1,14 @@
+# npm 全局包（2026-10 从 Windows 工作机导出）
+# 安装：npm i -g $(grep -v '^#' node/npm-globals.txt)
+@openai/codex
+@google/gemini-cli
+@qwen-code/qwen-code
+@larksuite/cli
+acpx
+feishu2md
+mmx-cli
+openskills
+pnpm
+ts-node
+webpack-cli
+yarn

@@ -10,16 +10,24 @@
 │   └── workflows/
 │       └── main.yml
 ├── cursor/               # Cursor AI 配置
-│   └── settings.json
+│   ├── settings.json
+│   └── extensions.txt
 ├── git/                  # Git 配置
-│   └── .gitconfig
+│   ├── .gitconfig
+│   └── .gitconfig.local.example
 ├── node/                 # Node.js/npm 配置
 │   └── .npmrc
 ├── ssh/                  # SSH 配置
 │   └── config
 ├── vscode/               # VSCode 配置
-│   └── settings.json
-├── install.sh            # 自动安装脚本
+│   ├── settings.json
+│   ├── keybindings.json
+│   ├── snippets/
+│   └── extensions.txt    # 扩展清单
+├── maven/                # Maven settings 模板（无密码）
+├── wsl/                  # .wslconfig
+├── install.sh            # macOS / Linux 安装脚本
+├── install.ps1           # Windows 安装脚本
 └── README.md
 ```
 
@@ -30,7 +38,7 @@
 首先，将此仓库克隆到你的本地机器上：
 
 ```bash
-git clone git@github.com:YourUsername/dotfiles.git ~/.dotfiles
+git clone git@github.com:dsmsmj/dotfiles.git ~/.dotfiles
 ```
 
 ### 2. 运行安装脚本
@@ -53,10 +61,26 @@ cd ~/.dotfiles
 你也可以使用以下命令，在新机器上直接克隆并运行安装脚本：
 
 ```bash
-git clone https://github.com/YourUsername/dotfiles.git ~/.dotfiles && ~/.dotfiles/install.sh
+git clone https://github.com/dsmsmj/dotfiles.git ~/.dotfiles && ~/.dotfiles/install.sh
 ```
 
-请将 `YourUsername` 替换为你的 GitHub 用户名。
+### Windows
+
+```powershell
+git clone https://github.com/dsmsmj/dotfiles.git $HOME\dotfiles
+powershell -ExecutionPolicy Bypass -File $HOME\dotfiles\install.ps1 -InstallExtensions
+```
+
+创建符号链接需要管理员 PowerShell，或在「设置 → 系统 → 开发者选项」里打开开发者模式。
+
+### 不进仓库的东西（仓库是公开的）
+
+| 内容 | 放哪 |
+|---|---|
+| 公司 Git 身份、`safe.directory` | `~/.gitconfig.local`（模板：`git/.gitconfig.local.example`） |
+| Maven 私服地址和账号 | `~/.m2/settings.xml`（模板：`maven/settings.template.xml`） |
+| Claude Code / 各种 API Key、`claudeCode.environmentVariables` | 只放本机，换机后重新申请 |
+| SSH 私钥 | 新机器重新生成，再把公钥加到 GitHub / Gitee |
 
 ## 配置说明
 
@@ -86,11 +110,12 @@ git clone https://github.com/YourUsername/dotfiles.git ~/.dotfiles && ~/.dotfile
 
 ### Git
 
-*   `.gitconfig`: 包含了你的 Git 用户名、邮箱、常用的别名和默认分支设置。请根据你的实际情况修改 `user.name` 和 `user.email`。
+*   `.gitconfig`: 个人身份、常用别名、默认分支、`core.longpaths`。末尾 `include` 了 `~/.gitconfig.local`，公司身份等机器相关配置写在那里。
 
 ### Node.js / npm
 
 *   `.npmrc`: 配置了 npm 的注册表地址。默认指向官方 npm 注册表。
+*   `npm-globals.txt`: 全局 npm 包清单，安装：`npm i -g $(grep -v '^#' node/npm-globals.txt)`
 *   Windows 版本管理（nvm-windows）：见 `doc/windows/nvm.md`
 
 ### SSH
@@ -99,15 +124,17 @@ git clone https://github.com/YourUsername/dotfiles.git ~/.dotfiles && ~/.dotfile
 
 ### VSCode
 
-*   `settings.json`: VSCode 的用户设置。包含了字体大小、Tab 宽度、自动保存、主题、终端配置、Git 自动拉取和保存时格式化等设置。
+*   `settings.json` / `keybindings.json` / `snippets/`: 用户设置、快捷键、代码片段（Cursor 共用同一份 snippets）。
+*   `extensions.txt`: 扩展清单，`install.ps1 -InstallExtensions` 会自动安装。
 
 ### Cursor AI
 
-*   `settings.json`: Cursor AI 的用户设置。与 VSCode 设置类似，并额外配置了 `cursor.chat.preferredModel` 为 `gpt-4`。
+*   `settings.json`: Cursor 的用户设置。
+*   `extensions.txt`: Cursor 扩展清单。
 
 ## GitHub Actions
 
-仓库中包含了 `.github/workflows/main.yml` 文件，它定义了一个 GitHub Actions 工作流。这个工作流会在每次 `push` 或 `pull_request` 到仓库时运行，以验证 `install.sh` 脚本是否能成功执行，并检查关键配置文件的内容是否符合预期。这有助于确保你的 dotfiles 始终保持可用和正确。
+仓库中包含了 `.github/workflows/main.yml` 文件，它定义了一个 GitHub Actions 工作流。这个工作流目前只能手动触发（`workflow_dispatch`），以验证 `install.sh` 脚本是否能成功执行，并检查关键配置文件的内容是否符合预期。这有助于确保你的 dotfiles 始终保持可用和正确。
 
 ## 自定义
 

@@ -81,18 +81,15 @@
     "gitlens.ai.model": "gitkraken",
     "gitlens.ai.gitkraken.model": "gemini:gemini-2.5-flash",
     "cursor.general.disableHttp2": true,
-    "http.proxyStrictSSL": false,
     "gitlens.views.fileHistory.mode": "contributors",
     "chat.viewSessions.orientation": "stacked",
-    "http.proxy": "http://127.0.0.1:1082",
-    "claudeCode.environmentVariables": [
-        {
-            "name": "HTTPS_PROXY",
-            "value": "http://127.0.0.1:1082"
-        },
-        {
-            "name": "HTTP_PROXY",
-            "value": "http://127.0.0.1:1082"
-        }
-    ]
+    "http.proxy": "http://127.0.0.1:7897",
+    "workbench.colorTheme": "Light Modern",
+    "security.allowedUNCHosts": [
+        "wsl.localhost"
+    ],
+    "window.autoDetectColorScheme": true,
+    "claudeCode.preferredLocation": "panel",
+    "security.promptForLocalFileProtocolHandling": false,
+    "jdk.telemetry.enabled": false
 }

@@ -34,11 +34,11 @@ link_file "${dotfiles_dir}/ssh/config" "${HOME}/.ssh/config"
 chmod 600 "${HOME}/.ssh/config" # SSH config 文件需要严格权限
 
 # 根据操作系统判断 VSCode 和 Cursor AI 的配置路径
-if [[ "$OSTYPE" == "darwin" ]]; then
+if [[ "$OSTYPE" == darwin* ]]; then
     # macOS
     VSCODE_CONFIG_DIR="${HOME}/Library/Application Support/Code/User"
     CURSOR_CONFIG_DIR="${HOME}/Library/Application Support/Cursor/User"
-elif [[ "$OSTYPE" == "linux-gnu" ]]; then
+elif [[ "$OSTYPE" == linux* ]]; then
     # Linux
     VSCODE_CONFIG_DIR="${HOME}/.config/Code/User"
     CURSOR_CONFIG_DIR="${HOME}/.config/Cursor/User"
@@ -51,7 +51,17 @@ fi
 # VSCode 配置
 link_file "${dotfiles_dir}/vscode/settings.json" "${VSCODE_CONFIG_DIR}/settings.json"
 
+link_file "${dotfiles_dir}/vscode/keybindings.json" "${VSCODE_CONFIG_DIR}/keybindings.json"
+link_file "${dotfiles_dir}/vscode/snippets" "${VSCODE_CONFIG_DIR}/snippets"
+
 # Cursor AI 配置
 link_file "${dotfiles_dir}/cursor/settings.json" "${CURSOR_CONFIG_DIR}/settings.json"
+link_file "${dotfiles_dir}/vscode/snippets" "${CURSOR_CONFIG_DIR}/snippets"
+
+# 本机私有配置模板（只在不存在时生成，不覆盖）
+[ -f "${HOME}/.gitconfig.local" ] || cp "${dotfiles_dir}/git/.gitconfig.local.example" "${HOME}/.gitconfig.local"
+if [ ! -f "${HOME}/.m2/settings.xml" ]; then
+    mkdir -p "${HOME}/.m2" && cp "${dotfiles_dir}/maven/settings.template.xml" "${HOME}/.m2/settings.xml"
+fi
 
 echo "dotfiles 安装完成！"

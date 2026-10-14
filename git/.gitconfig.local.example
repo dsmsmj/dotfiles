@@ -1,0 +1,14 @@
+# 复制为 ~/.gitconfig.local 后按需修改；此文件不进仓库。
+
+# 公司电脑：默认用工作身份提交
+# [user]
+#   name = your-work-name
+#   email = you@company.com
+
+# 只对公司代码目录切换为工作身份（个人电脑推荐这种写法）
+# [includeIf "gitdir/i:C:/work/"]
+#   path = ~/.gitconfig.work
+
+# 只信任具体目录，不要用 directory = *
+# [safe]
+#   directory = C:/path/to/repo

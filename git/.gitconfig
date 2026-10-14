@@ -3,6 +3,8 @@
   email = dsmsmj@outlook.com
 [core]
   editor = vim
+  # Windows 下仓库路径过长时避免 checkout 失败
+  longpaths = true
 [alias]
   co = checkout
   br = branch
@@ -12,3 +14,10 @@
   last = log -1 HEAD
 [init]
   defaultBranch = main
+[credential "https://gitee.com"]
+  provider = generic
+
+# 机器本地配置（公司身份、safe.directory 等）放在 ~/.gitconfig.local，不进仓库。
+# 示例见 git/.gitconfig.local.example
+[include]
+  path = ~/.gitconfig.local
