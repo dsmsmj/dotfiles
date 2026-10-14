@@ -33,6 +33,32 @@ Link-File "$Dot\vscode\snippets"         "$code\snippets"
 Link-File "$Dot\cursor\settings.json"    "$cursor\settings.json"
 Link-File "$Dot\vscode\snippets"         "$cursor\snippets"
 
+# Windows Terminal
+$wt = Get-ChildItem "$env:LOCALAPPDATA\Packages" -Directory -Filter 'Microsoft.WindowsTerminal_*' -ErrorAction SilentlyContinue | Select-Object -First 1
+if ($wt) { Link-File "$Dot\windows-terminal\settings.json" "$($wt.FullName)\LocalState\settings.json" }
+
+# Cursor 用户级：rules / developer-context 链接，skills 和 mcp 只在缺失时复制
+Link-File "$Dot\.cursor\rules"             "$HOME\.cursor\rules"
+Link-File "$Dot\.cursor\developer-context" "$HOME\.cursor\developer-context"
+function Copy-IfMissing($Source, $Target) {
+    if (-not (Test-Path $Target)) {
+        New-Item -ItemType Directory -Path (Split-Path $Target) -Force | Out-Null
+        Copy-Item $Source $Target -Recurse
+        Write-Host "复制: $Target"
+    }
+}
+foreach ($s in 'diff-git-review','quick-git-commit-no-verify','legacy-feature-kickoff','mvp-functional-refactor','product-docs-query') {
+    Copy-IfMissing "$Dot\.cursor\skills\$s" "$HOME\.cursor\skills\$s"
+}
+Copy-IfMissing "$Dot\cuddy\dev-team-dialogue" "$HOME\.cursor\skills\dev-team-dialogue"
+Copy-IfMissing "$Dot\.cursor\mcp.json" "$HOME\.cursor\mcp.json"
+
+# Codex：config 只在缺失时复制（Codex 会持续改写它），rules/skills 同理
+Copy-IfMissing "$Dot\codex\config.toml"   "$HOME\.codex\config.toml"
+Copy-IfMissing "$Dot\codex\rules"         "$HOME\.codex\rules"
+foreach ($s in 'image-designer','skill-smoke-test') { Copy-IfMissing "$Dot\codex\skills\$s" "$HOME\.codex\skills\$s" }
+foreach ($s in 'diff-git-review','quick-git-commit-no-verify') { Copy-IfMissing "$Dot\.cursor\skills\$s" "$HOME\.codex\skills\$s" }
+
 if (-not (Test-Path "$HOME\.gitconfig.local")) {
     Copy-Item "$Dot\git\.gitconfig.local.example" "$HOME\.gitconfig.local"
     Write-Host "已生成 ~/.gitconfig.local，按需填写本机身份"

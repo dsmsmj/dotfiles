@@ -1,0 +1,4 @@
+interface:
+  display_name: "MVP Functional Refactor"
+  short_description: "从功能和用户价值出发重构 MVP 演示项目"
+  default_prompt: "请按功能价值、核心用户流程和 MVP 优先级，分析并重构这个演示项目，保留可演示闭环并给出可验证的实现结果。"

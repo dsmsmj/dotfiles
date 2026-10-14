@@ -28,6 +28,9 @@
 ├── wsl/                  # .wslconfig
 ├── install.sh            # macOS / Linux 安装脚本
 ├── install.ps1           # Windows 安装脚本
+├── windows-terminal/     # Windows Terminal 设置
+├── codex/                # Codex 配置 / rules / skills
+├── agents/               # ~/.agents skills 的 lock 文件
 └── README.md
 ```
 
@@ -73,6 +76,17 @@ powershell -ExecutionPolicy Bypass -File $HOME\dotfiles\install.ps1 -InstallExte
 
 创建符号链接需要管理员 PowerShell，或在「设置 → 系统 → 开发者选项」里打开开发者模式。
 
+### AI 工具配置
+
+| 内容 | 仓库位置 | 安装方式 |
+|---|---|---|
+| Cursor 规则、developer-context | `.cursor/rules`、`.cursor/developer-context` | `install.ps1` 链接到 `~/.cursor` |
+| Cursor 自写 skills、`mcp.json` | `.cursor/skills/*`、`.cursor/mcp.json` | 缺失时复制 |
+| Cursor 第三方 skills（frontend-design 等） | `.cursor/skills/skills-lock.json` | 按 lock 里的来源重新装 |
+| Codex 配置、rules、自写 skills | `codex/` | 缺失时复制（image-designer 需自己建 `.env`，见 `.env.example`） |
+| `~/.agents/skills`（mattpocock、vercel-labs 两套） | `agents/.skill-lock.json` | 用 skills CLI 按 lock 重装 |
+| Windows Terminal | `windows-terminal/settings.json` | `install.ps1` 链接 |
+
 ### 不进仓库的东西（仓库是公开的）
 
 | 内容 | 放哪 |
@@ -81,6 +95,8 @@ powershell -ExecutionPolicy Bypass -File $HOME\dotfiles\install.ps1 -InstallExte
 | Maven 私服地址和账号 | `~/.m2/settings.xml`（模板：`maven/settings.template.xml`） |
 | Claude Code / 各种 API Key、`claudeCode.environmentVariables` | 只放本机，换机后重新申请 |
 | SSH 私钥 | 新机器重新生成，再把公钥加到 GitHub / Gitee |
+| 公司专用 skill（如 iconfont） | 公司仓库或私有备份 |
+| 各项目的 `.env`、`.env.private` | 私有备份（密码管理器 / 公司网盘） |
 
 ## 配置说明
 

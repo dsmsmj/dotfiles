@@ -1,0 +1,16 @@
+# Codex 全局配置（精简版）。
+# 只保留个人偏好；projects 信任列表、插件市场路径、node_repl 等由 Codex 自动生成，换机后会自己重建。
+# 安装：仅在 ~/.codex/config.toml 不存在时复制过去（Codex 会持续改写这个文件，不适合做软链接）。
+model = "gpt-5.6-luna"
+model_reasoning_effort = "medium"
+
+[windows]
+sandbox = "elevated"
+
+[features]
+js_repl = false
+respect_system_proxy = true
+
+[desktop]
+followUpQueueMode = "queue"
+conversationDetailMode = "STEPS_COMMANDS"
