@@ -33,6 +33,21 @@ link_file "${dotfiles_dir}/node/.npmrc" "${HOME}/.npmrc"
 link_file "${dotfiles_dir}/ssh/config" "${HOME}/.ssh/config"
 chmod 600 "${HOME}/.ssh/config" # SSH config 文件需要严格权限
 
+# WSL：编辑器跑在 Windows 侧，这里只装 shell 和系统配置
+if grep -qi microsoft /proc/version 2>/dev/null; then
+    echo "检测到 WSL"
+    line="[ -f \"${dotfiles_dir}/wsl/ubuntu/bashrc.custom.sh\" ] && . \"${dotfiles_dir}/wsl/ubuntu/bashrc.custom.sh\""
+    grep -qF "wsl/ubuntu/bashrc.custom.sh" "${HOME}/.bashrc" 2>/dev/null || echo "$line" >> "${HOME}/.bashrc"
+    if ! cmp -s "${dotfiles_dir}/wsl/ubuntu/wsl.conf" /etc/wsl.conf; then
+        echo "更新 /etc/wsl.conf（需要 sudo，之后在 PowerShell 执行 wsl --shutdown 生效）"
+        sudo cp "${dotfiles_dir}/wsl/ubuntu/wsl.conf" /etc/wsl.conf
+    fi
+    echo "apt 包清单：wsl/ubuntu/apt-manual.txt（需要时手动安装）"
+    [ -f "${HOME}/.gitconfig.local" ] || cp "${dotfiles_dir}/git/.gitconfig.local.example" "${HOME}/.gitconfig.local"
+    echo "dotfiles 安装完成！"
+    exit 0
+fi
+
 # 根据操作系统判断 VSCode 和 Cursor AI 的配置路径
 if [[ "$OSTYPE" == darwin* ]]; then
     # macOS

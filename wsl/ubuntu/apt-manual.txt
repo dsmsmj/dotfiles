@@ -1,0 +1,36 @@
+# WSL Ubuntu 手动安装的 apt 包（Ubuntu 24.04.1 LTS，2026-10 导出）
+# 安装：sudo apt update && sudo apt install -y $(grep -v '^#' wsl/ubuntu/apt-manual.txt)
+base-files
+bash
+bsdutils
+build-essential
+ca-certificates
+coreutils
+curl
+dash
+debianutils
+diffutils
+dnf
+docker-compose
+findutils
+gnupg2
+grep
+gzip
+hostname
+init
+libattr1
+login
+lsb-release
+ncurses-base
+ncurses-bin
+nginx
+openssh-server
+python3-dev
+python3-pip
+python3-venv
+python3.12-venv
+ubuntu-keyring
+ubuntu-minimal
+ubuntu-wsl
+unzip
+util-linux

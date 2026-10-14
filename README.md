@@ -25,7 +25,7 @@
 │   ├── snippets/
 │   └── extensions.txt    # 扩展清单
 ├── maven/                # Maven settings 模板（无密码）
-├── wsl/                  # .wslconfig
+├── wsl/                  # .wslconfig（Windows 侧）+ ubuntu/（WSL 内的 bashrc、wsl.conf、apt 清单）
 ├── install.sh            # macOS / Linux 安装脚本
 ├── install.ps1           # Windows 安装脚本
 ├── windows-terminal/     # Windows Terminal 设置
@@ -75,6 +75,16 @@ powershell -ExecutionPolicy Bypass -File $HOME\dotfiles\install.ps1 -InstallExte
 ```
 
 创建符号链接需要管理员 PowerShell，或在「设置 → 系统 → 开发者选项」里打开开发者模式。
+
+### WSL（Ubuntu）
+
+在 WSL 里：
+
+```bash
+git clone https://github.com/dsmsmj/dotfiles.git ~/dotfiles && ~/dotfiles/install.sh
+```
+
+会链接 `.gitconfig`、`.npmrc`、`.ssh/config`，在 `~/.bashrc` 末尾引入 `wsl/ubuntu/bashrc.custom.sh`（代理、PATH），并同步 `/etc/wsl.conf`（开启 systemd）。apt 包清单在 `wsl/ubuntu/apt-manual.txt`。Windows 侧的 `.wslconfig`（`networkingMode=mirrored`）由 `install.ps1` 负责。
 
 ### AI 工具配置
 
